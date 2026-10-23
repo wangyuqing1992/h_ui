@@ -23,7 +23,7 @@ import Icon from './components/Icon';
 import Input from './components/Input';
 import InputNumber from './components/InputNumber';
 // import Scroll from './components/scroll';
-import LoadingBar from './components/LoadingBar';
+import LoadingBar from './components/Loadingbar';
 import Menu from './components/Menu';
 import Message from './components/Message';
 import MsgBox from './components/MsgBox';

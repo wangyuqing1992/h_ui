@@ -9,24 +9,22 @@ $col-prefix-cls: "#{$css-prefix}col";
   @include clearfix();
 }
 
-@mixin float-grid-columns($class) {
-  @mixin col($index) { // initial
+// libsass rejects mixin definitions nested inside another mixin.
+@mixin float-grid-col1($index, $list, $class) {
+  @if $index <= $grid-columns {
     $item: ".#{$col-prefix-cls}-span#{$class}-#{$index}";
-    @include col1(($index + 1), $item);
-  }
-
-  @mixin col1($index, $list) { // general
-    @if $index <= $grid-columns {
-      $item: ".#{$col-prefix-cls}-span#{$class}-#{$index}";
-      @include col1(($index + 1), "#{$list}, #{$item}");            
-    } @else {
-      #{$list} {
+    @include float-grid-col1(($index + 1), "#{$list}, #{$item}", $class);
+  } @else {
+    #{$list} {
       float: left;
       flex: 0 0 auto;
-      }
     }
   }
-  @include col(1); // kickstart it
+}
+
+@mixin float-grid-columns($class) {
+  $item: ".#{$col-prefix-cls}-span#{$class}-1";
+  @include float-grid-col1(2, $item, $class);
 }
 
 @mixin loop-grid-columns($index, $class) {
