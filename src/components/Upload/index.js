@@ -1,3 +1,3 @@
-import Upload from './upload.vue';
+import Upload from './Upload.vue';
 
 export default Upload;
